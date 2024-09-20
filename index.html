@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rubik's Cube</title>
+    <style>
+        body {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .cube {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(0deg);
+            transition: transform 1s;
+        }
+
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            border: 2px solid #ccc;
+        }
+
+        .small-box {
+            width: 66.67px; 
+            height: 66.67px; 
+            border: 1px solid #aaa;
+        }
+
+        .front { 
+            transform: rotateY(0deg) translateZ(100px); 
+        }
+        .back { 
+            transform: rotateY(180deg) translateZ(100px); 
+        }
+        .left { 
+            transform: rotateY(-90deg) translateZ(100px); 
+        }
+        .right { 
+            transform: rotateY(90deg) translateZ(100px); 
+        }
+        .top { 
+            transform: rotateX(90deg) translateZ(100px); 
+        }
+        .bottom { 
+            transform: rotateX(-90deg) translateZ(100px); 
+        }
+
+        .front .small-box { background-color: #ff5733; }
+        .back .small-box { background-color: #33c1ff; }
+        .left .small-box { background-color: #75ff33; }
+        .right .small-box { background-color: #ff33a1; }
+        .top .small-box { background-color: #ffcc33; }
+        .bottom .small-box { background-color: #9b59b6; }
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="face front">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+        <div class="face back">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+        <div class="face left">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+        <div class="face right">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+        <div class="face top">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+        <div class="face bottom">
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+            <div class="small-box"></div>
+        </div>
+    </div>
+    <script>
+        let rotationY = 0;
+        let rotationX = 0;
+
+        function rotateCube() {
+            rotationY += 3;
+            rotationX += 1;
+            document.querySelector('.cube').style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+        }
+
+        setInterval(rotateCube, 20);
+    </script>
+</body>
+</html>
